@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <time.h>
 
+#include <stdbool.h>
+#include "mot_valide.h"
 
 
 int main(){
@@ -16,8 +18,14 @@ int main(){
         return 0;
     }
 
-    choisir_un_mot_alea(dico);
+        choisir_un_mot_alea(dico);
 
+
+    char* mot_utilisateur=malloc (sizeof(char));
+    scanf("%s",mot_utilisateur);
+    while (! mot_valide(mot_utilisateur, dico)){
+        scanf("%s",mot_utilisateur);
+        }
 
 }
 

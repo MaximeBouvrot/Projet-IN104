@@ -15,6 +15,7 @@ bool mot_valide (char* mot_utilisateur, FILE* dico){
             {return true;
     }
     }
+    free(buffer);
     printf("Le mot n'est pas dans le dictionnaire.\n");
     return false;
 }

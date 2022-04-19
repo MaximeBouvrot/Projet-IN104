@@ -21,8 +21,12 @@ int main(void){
     }
 
     // On choisit un mot de 5 lettres dans le dictionnaire
-        char* mot_mystere=choisir_un_mot_alea(dico);
-
+    int n = nombre_de_mot(dico);
+    fclose(dico);
+    int p = nombrealea(n);
+    char* mot = malloc(sizeof(char));
+    choisir_un_mot_alea(p, mot);
+    return printf("nombre de lignes : %d\nnombre aléatoire : %d\nmot mystère : %s\n",n,p,mot);
 
     //On demande un mot à l'utilisateur et on vérifie que son mot est valide (5 lettre et  existe ds le dico)
     char* mot_utilisateur=malloc (sizeof(char));
@@ -54,5 +58,8 @@ int main(void){
         printf("Bravo, félicitations c'était bien %s",mot_mystere );
         return 0;
     }
+    
+    free(mot);
+
 }
 

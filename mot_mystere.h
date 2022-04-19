@@ -7,6 +7,6 @@
 
 int nombre_de_mot(FILE* texte);
 int nombrealea(int n);
-void choisir_un_mot_alea(int n, char* mot )
+void choisir_un_mot_alea(int n, char* mot );
 
 #endif

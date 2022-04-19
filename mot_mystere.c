@@ -22,7 +22,7 @@ int nombrealea(int n){
 }
 
 void choisir_un_mot_alea(int n, char* mot ){
-    FILE* dico = fopen("liste_francais.txt","r");
+    FILE* dico = fopen("dico.txt","r");
      if (dico == NULL){
         printf("\nImpossible de charger le dictionnaire\n"); 
         return ;

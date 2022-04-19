@@ -10,7 +10,7 @@ int main(){
 
     // ouvrir le dico 
 
-    FILE* dico = fopen("/home/mahe/Documents/Cours 1A/in104/Projet-IN104/dico.txt","r");
+    FILE* dico = fopen("dico.txt","r");
 
     // on vérifie que le dico est bien ouvert 
     if (dico == NULL){
@@ -27,6 +27,8 @@ int main(){
     scanf("%s",mot_utilisateur);
     while (! mot_valide(mot_utilisateur, dico)){
         scanf("%s",mot_utilisateur);
+        fclose(dico);  
+        FILE* dico = fopen("dico.txt","r");
         }
     
     //On compare le mot de l'utilisateur et le mot mystère

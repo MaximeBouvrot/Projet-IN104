@@ -1,12 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <time.h>
-
 #include <stdbool.h>
+
 #include "mot_valide.h"
+#include "fonction_dico.h"
 
 
-int main(){
+int main(void){
 
     // ouvrir le dico 
 
@@ -19,7 +21,7 @@ int main(){
     }
 
     // On choisit un mot de 5 lettres dans le dictionnaire
-        mot_mystere=choisir_un_mot_alea(dico);
+        char* mot_mystere=choisir_un_mot_alea(dico);
 
 
     //On demande un mot à l'utilisateur et on vérifie que son mot est valide (5 lettre et  existe ds le dico)
@@ -29,6 +31,8 @@ int main(){
         scanf("%s",mot_utilisateur);
         fclose(dico);  
         FILE* dico = fopen("dico.txt","r");
+        // alternative avec rewind
+        void rewind(FILE* dico);
         }
     
     //On compare le mot de l'utilisateur et le mot mystère
@@ -42,13 +46,13 @@ int main(){
     }
 
     if (strcmp(mot_utilisateur,mot_mystere)!=0){
-        printf("Perdu, relance le jeu pour réessayer")
-        return 0
+        printf("Perdu, relance le jeu pour réessayer");
+        return 0;
     }
 
     else {
-        printf("Bravo, félicitations c'était bien %s",mot_mystere )
-        return 0
+        printf("Bravo, félicitations c'était bien %s",mot_mystere );
+        return 0;
     }
 }
 

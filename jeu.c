@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 #include "mot_valide.h"
-#include "fonction_dico.h"
+#include "mot_mystere.h"
 
 
 int main(void){

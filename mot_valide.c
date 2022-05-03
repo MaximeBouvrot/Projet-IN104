@@ -39,9 +39,10 @@ int main(void){
         printf("\nImpossible de charger le dictionnaire\n");
         return 0;
     }
-    char* mot_utilisateur = "voter";
+    char mot_utilisateur[25] = "voter";
     mot_valide(mot_utilisateur, dico);
-    printf("lettre no1 : %d\n",mot_utilisateur[0]);
+    char l = mot_utilisateur[1];
+    printf("lettre no1 : %c\n",l);
 
     return 0;
 }

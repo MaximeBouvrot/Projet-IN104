@@ -28,7 +28,7 @@ int main(void){
     choisir_un_mot_alea(p, mot);
     printf("nombre de lignes : %d\nnombre aléatoire : %d\nmot mystère : %s\n",n,p,mot);
 
-    //On demande un mot à l'utilisateur et on vérifie que son mot est valide (5 lettre et  existe ds le dico)
+    //On demande un mot à l'utilisateur et on vérifie que son mot est valide (5 lettres et  existe ds le dico)
     char* mot_utilisateur=malloc(26*sizeof(char));
     scanf("%s",mot_utilisateur);
     while (! mot_valide(mot_utilisateur, dico)){
@@ -38,7 +38,7 @@ int main(void){
         // alternative avec rewind
         void rewind(FILE* dico);
         }
-    
+    /*/
     //On compare le mot de l'utilisateur et le mot mystère
 	int i=1;
 	while (strcmp(mot_utilisateur,mot)!=0 || i<6){
@@ -55,11 +55,13 @@ int main(void){
     }
 
     else {
-        printf("Bravo, félicitations c'était bien %s",mot );
+        printf("Bravo, félicitations c'était bien %s, tu l'as trouvé en %d tentatives",mot,i );
         return 0;
     }
-    
+    /*/
+
     free(mot);
+    return 1;
 
 }
 

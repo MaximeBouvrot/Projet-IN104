@@ -6,6 +6,7 @@
 
 #include "mot_valide.h"
 #include "mot_mystere.h"
+#include "comparaison.h"
 
 
 int main(void){
@@ -22,46 +23,39 @@ int main(void){
 
     // On choisit un mot de 5 lettres dans le dictionnaire
     int n = nombre_de_mot(dico);
-    fclose(dico);
     int p = nombrealea(n);
     char* mot = malloc(sizeof(char));
     choisir_un_mot_alea(p, mot);
     printf("nombre de lignes : %d\nnombre aléatoire : %d\nmot mystère : %s\n",n,p,mot);
 
-    //On demande un mot à l'utilisateur et on vérifie que son mot est valide (5 lettres et  existe ds le dico)
+    //Comparaison des mots utilisateur et du mot mystère :
+    rewind(dico);
+    printf("veuillez saisir un mot de 5 lettres\n");
+	int i=1;
     char* mot_utilisateur=malloc(26*sizeof(char));
     scanf("%s",mot_utilisateur);
-    while (! mot_valide(mot_utilisateur, dico)){
-        scanf("%s",mot_utilisateur);
-        fclose(dico);  
-        FILE* dico = fopen("dico.txt","r");
-        // alternative avec rewind
-        void rewind(FILE* dico);
+	while (strcmp(mot_utilisateur,mot)!=0 && i<6){
+        if (mot_valide(mot_utilisateur,dico)== true){
+            comparaison(mot_utilisateur,mot);
         }
-    /*/
-    //On compare le mot de l'utilisateur et le mot mystère
-	int i=1;
-	while (strcmp(mot_utilisateur,mot)!=0 || i<6){
-        //On regarde les différences et on les liste
+        i+=1;
+        scanf("%s",mot_utilisateur);
 
-        //On fait un affichage qui permet à l'utilisateur de savoir les positions/ce qui est faux
-
-    i+=1;
     }
 
+    free(mot_utilisateur);
+    fclose(dico);
+
+    //Affichage des résultats :
+
     if (strcmp(mot_utilisateur,mot)!=0){
-        printf("Perdu, relance le jeu pour réessayer");
+        printf("Perdu, relance le jeu pour réessayer\n");
         return 0;
     }
 
     else {
-        printf("Bravo, félicitations c'était bien %s, tu l'as trouvé en %d tentatives",mot,i );
+        printf("Bravo, félicitations c'était bien %s, tu l'as trouvé en %d tentatives\n",mot,i );
         return 0;
     }
-    /*/
-
-    free(mot);
-    return 1;
-
 }
 

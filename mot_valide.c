@@ -4,7 +4,6 @@
 #include <string.h>
 
 bool mot_valide (char* mot_utilisateur, FILE* dico){
-    rewind(dico);
     if (strlen(mot_utilisateur)!=5){
         printf("Le mot ne fait pas 5 lettres.\n");
         return false;
@@ -14,10 +13,12 @@ bool mot_valide (char* mot_utilisateur, FILE* dico){
     fscanf(dico,"%s",mot_courant);
     while (strcmp(mot_utilisateur,mot_courant)!=0){
         fscanf(dico,"%s",mot_courant);
-        /*if (strlen(mot_courant)==5){
-            printf("mot courant : %s\n",mot_courant);
-        }*/
-        if(feof(dico) != 0){
+
+        while (strlen(mot_courant)!=5){
+            fscanf(dico,"%s",mot_courant);
+            }
+
+        if(feof(dico) == EOF){
             printf("fin du fichier, le mot n'est pas dans le dico\n");
             printf("vous pouvez saisir un nouveau mot\n");
             return false;

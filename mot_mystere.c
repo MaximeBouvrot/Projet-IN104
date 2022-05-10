@@ -22,15 +22,15 @@ int nombrealea(int n){
     return (rand() % n);
 }
 
-void choisir_un_mot_alea(int n, char* mot, FILE* texte ){
+void choisir_un_mot_alea(int alea, char* mot, FILE* texte ){
     int j = 0;
-    while(j != n){
+    while(j != alea){
         fscanf(texte,"%s",mot);
         j ++;
     }
     while (strlen(mot)!=5){
         fscanf(texte,"%s",mot);
         }
-    rewind(dico);
+    rewind(texte);
 } 
 

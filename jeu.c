@@ -10,6 +10,7 @@
 
 
 int main(void){
+    srand(time(NULL));
 
     // ouvrir le dico 
 

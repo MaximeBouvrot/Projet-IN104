@@ -13,6 +13,7 @@ int nombre_de_mot(FILE* texte){
         nb_lignes ++ ;
     }
     free(c);
+    rewind(texte);
     return nb_lignes;
 }
 
@@ -21,19 +22,15 @@ int nombrealea(int n){
     return (rand() % n);
 }
 
-void choisir_un_mot_alea(int n, char* mot ){
-    FILE* dico = fopen("dico.txt","r");
-     if (dico == NULL){
-        printf("\nImpossible de charger le dictionnaire\n"); 
-        return ;
-    }
+void choisir_un_mot_alea(int n, char* mot, FILE* texte ){
     int j = 0;
     while(j != n){
-        fscanf(dico,"%s",mot);
+        fscanf(texte,"%s",mot);
         j ++;
     }
     while (strlen(mot)!=5){
-        fscanf(dico,"%s",mot);
+        fscanf(texte,"%s",mot);
         }
+    rewind(dico);
 } 
 

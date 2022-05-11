@@ -26,7 +26,7 @@ char* oter(int i, char* mot){
 int comparaison(char*mot_utilisateur, char*mot){
     /* 
         Principe du code : 
-        On créé un tableau de 5 entiers 0.
+        On créé un tableau de 5 entiers initialisés à 0.
         On commence par traiter les lettres vertes. On créé une copie du mot où les lettres vertes sont remplacées par des
         espaces, qu'on nomme mot_jaune (il n'y a plus que des espaces ou des lettres jaunes ou noires dedans). 
         On traite ensuite les lettres jaunes. On créé une copie du mot_jaune où les lettres vertes sont remplacées par des
@@ -43,43 +43,36 @@ int comparaison(char*mot_utilisateur, char*mot){
 
     mot_jaune = mot;
     mot_utilisateur_jaune = mot_utilisateur;
-    int j = 0;
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur[i];
         int position = cherche(mot,lettre_courante);
         if (position == i ){
                 t[i]=2;
-                mot_jaune = oter(j,mot_jaune);
-                mot_utilisateur_jaune = oter(j,mot_utilisateur_jaune);
-                j = 0;
+                mot_jaune = oter(position,mot_jaune);
+                mot_utilisateur_jaune = oter(position,mot_utilisateur_jaune);
             } 
-        else{
-            j ++;
-        }
     }
+    for(int i=0; i<5; i++){printf("%d ",t[i]);}
+    printf("\n");
 
     mot_noir= mot_jaune;
     mot_utilisateur_noir = mot_utilisateur_jaune;
-    int k = 0;
+    
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur_noir[i];
         int position = cherche(mot_noir,lettre_courante);
         if (position < 5 && lettre_courante != ' '){
             t[i]=1;
             mot_noir = oter(position,mot_noir);
-            mot_utilisateur_noir = oter(k,mot_utilisateur_noir);
-            k = 0;
+            mot_utilisateur_noir = oter(position,mot_utilisateur_noir);
         } 
-        else {
-            k++;
-        }
     }
     for(int i=0; i<5; i++){printf("%d ",t[i]);}
     printf("\n");
 
 
-    //printf(" mot jaune : %s\n mot_utilisateur_jaune : %s\n",mot_jaune, mot_utilisateur_jaune);
-    //printf(" mot noir : %s\n mot_utilisateur_noir : %s\n",mot_noir, mot_utilisateur_noir);
+    printf(" mot jaune : %s\n mot_utilisateur_jaune : %s\n",mot_jaune, mot_utilisateur_jaune);
+    printf(" mot noir : %s\n mot_utilisateur_noir : %s\n",mot_noir, mot_utilisateur_noir);
     // Affichage 
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur[i];
@@ -106,6 +99,6 @@ int comparaison(char*mot_utilisateur, char*mot){
 // int main(){
 //     // char* mot_copie = oter(2,"lilas");
 //     // printf("mot copié %s \n", mot_copie);
-//     comparaison("irrie","sabir");
+//     comparaison("orner","orage");
 //     return 0;
 // }

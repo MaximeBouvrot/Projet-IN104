@@ -4,8 +4,7 @@
 #include <string.h>
 
 int cherche(char *s, char carac){
-    int i;
-    for(i = 0; s[i] != '\0';i++)
+    for(int i = 0; s[i] != '\0';i++)
         if(s[i] == carac)
             return i;
     return 6;
@@ -13,43 +12,100 @@ int cherche(char *s, char carac){
 
 char* oter(int i, char* mot){
     char* mot_copie = malloc(26*sizeof(char));
-    //char* mot_copie[5];
-    int j = 0;
     for (int k=0; k<5; k++){
         if (k != i){
-            mot_copie[j]= mot[k];
-            printf("%c\n",mot_copie[k]);
-            j++;
+            mot_copie[k]= mot[k];
+        }
+        else {
+            mot_copie[k]= ' ' ;
         }
     }
-    printf("fin\n");
     return mot_copie ;
 }
 
 int comparaison(char*mot_utilisateur, char*mot){
+    /* 
+        Principe du code : 
+        On créé un tableau de 5 entiers 0.
+        On commence par traiter les lettres vertes. On créé une copie du mot où les lettres vertes sont remplacées par des
+        espaces, qu'on nomme mot_jaune (il n'y a plus que des espaces ou des lettres jaunes ou noires dedans). 
+        On traite ensuite les lettres jaunes. On créé une copie du mot_jaune où les lettres vertes sont remplacées par des
+        espaces, qu'on nomme mot_noir.
+        On complète pour chaque étape le tableau : 2 si vert, 1 si jaune, 0 si noir.
+        On affiche ensuite les lettres avec leur couleur.
+    */
+    int t[5];
+    for(int i=0; i<5; i++){t[i]=0;}
+    char* mot_jaune =malloc(26*sizeof(char)); //il n'y aura plus que des lettres jaunes et noires dedans
+    char* mot_noir = malloc(26*sizeof(char)); //il n'y aura plus que des lettres noires dedans
+    char* mot_utilisateur_jaune = malloc(26*sizeof(char));
+    char* mot_utilisateur_noir = malloc(26*sizeof(char));
+
+    mot_jaune = mot;
+    mot_utilisateur_jaune = mot_utilisateur;
+    int j = 0;
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur[i];
         int position = cherche(mot,lettre_courante);
-        if (position == 6){
-            printf(" %c lettre noire \n",lettre_courante);
-        } 
-        else {
-            if (position == i ){
-                printf(" %c lettre verte \n",lettre_courante);
+        if (position == i ){
+                t[i]=2;
+                mot_jaune = oter(j,mot_jaune);
+                mot_utilisateur_jaune = oter(j,mot_utilisateur_jaune);
+                j = 0;
             } 
-            else {
-                printf(" %c lettre jaune \n",lettre_courante);
-            }            
+        else{
+            j ++;
         }
     }
+
+    mot_noir= mot_jaune;
+    mot_utilisateur_noir = mot_utilisateur_jaune;
+    int k = 0;
+    for (int i=0; i<5; i++){
+        char lettre_courante =mot_utilisateur_noir[i];
+        int position = cherche(mot_noir,lettre_courante);
+        if (position < 5 && lettre_courante != ' '){
+            t[i]=1;
+            mot_noir = oter(position,mot_noir);
+            mot_utilisateur_noir = oter(k,mot_utilisateur_noir);
+            k = 0;
+        } 
+        else {
+            k++;
+        }
+    }
+    for(int i=0; i<5; i++){printf("%d ",t[i]);}
+    printf("\n");
+
+
+    //printf(" mot jaune : %s\n mot_utilisateur_jaune : %s\n",mot_jaune, mot_utilisateur_jaune);
+    //printf(" mot noir : %s\n mot_utilisateur_noir : %s\n",mot_noir, mot_utilisateur_noir);
+    // Affichage 
+    for (int i=0; i<5; i++){
+        char lettre_courante =mot_utilisateur[i];
+        if (t[i]==2){
+            printf(" %c lettre verte \n",lettre_courante);
+        }
+        else if (t[i]==1){
+            printf(" %c lettre jaune \n",lettre_courante);
+        }
+        else{
+            printf(" %c lettre noire \n",lettre_courante); 
+        }
+    }
+
+    free(mot_noir);
+    //free(mot_jaune);
+    //free(mot_utilisateur_jaune);
+    free(mot_utilisateur_noir);
     printf("vous pouvez saisir un nouveau mot\n");
     return 0;
 }
 
-int main(){
-    char* mot_copie = oter(2,"lilas");
-    printf("mot copié %s \n", mot_copie);
-    //comparaison("lilas","alors");
-    free(mot_copie);
-    return 0;
-}
+
+// int main(){
+//     // char* mot_copie = oter(2,"lilas");
+//     // printf("mot copié %s \n", mot_copie);
+//     comparaison("irrie","sabir");
+//     return 0;
+// }

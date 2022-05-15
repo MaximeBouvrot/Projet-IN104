@@ -28,8 +28,6 @@ bool mot_valide (char* mot_utilisateur, FILE* dico){
             }
         }
     }
-
-    printf("le mot est bien dans le dico\n");
     free(mot_courant);
     return true;
 }

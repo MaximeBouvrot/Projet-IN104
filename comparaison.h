@@ -7,6 +7,6 @@
 #include <string.h>
 
 int cherche(char *s, char carac);
-int comparaison(char*mot_utilisateur, char*mot);
+int comparaison(char*mot_utilisateur, char*mot,int* tableau);
 
 #endif

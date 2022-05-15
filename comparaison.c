@@ -3,6 +3,11 @@
 #include <time.h>
 #include <string.h>
 
+struct Lettre_struct {
+    int couleur;
+    char lettre;
+};
+
 int cherche(char *s, char carac){
     for(int i = 0; s[i] != '\0';i++)
         if(s[i] == carac)
@@ -23,7 +28,7 @@ char* oter(int i, char* mot){
     return mot_copie ;
 }
 
-int comparaison(char*mot_utilisateur, char*mot){
+int comparaison(char*mot_utilisateur, char*mot, int* tableau){
     /* 
         Principe du code : 
         On créé un tableau de 5 entiers initialisés à 0.
@@ -34,8 +39,7 @@ int comparaison(char*mot_utilisateur, char*mot){
         On complète pour chaque étape le tableau : 2 si vert, 1 si jaune, 0 si noir.
         On affiche ensuite les lettres avec leur couleur.
     */
-    int t[5];
-    for(int i=0; i<5; i++){t[i]=0;}
+    for(int i=0; i<5; i++){tableau[i]=0;}
     char* mot_jaune =malloc(26*sizeof(char)); //il n'y aura plus que des lettres jaunes et noires dedans
     char* mot_noir = malloc(26*sizeof(char)); //il n'y aura plus que des lettres noires dedans
     char* mot_utilisateur_jaune = malloc(26*sizeof(char));
@@ -47,12 +51,12 @@ int comparaison(char*mot_utilisateur, char*mot){
         char lettre_courante =mot_utilisateur[i];
         int position = cherche(mot,lettre_courante);
         if (position == i ){
-                t[i]=2;
+                tableau[i]=2;
                 mot_jaune = oter(position,mot_jaune);
                 mot_utilisateur_jaune = oter(position,mot_utilisateur_jaune);
             } 
     }
-    for(int i=0; i<5; i++){printf("%d ",t[i]);}
+    for(int i=0; i<5; i++){printf("%d ",tableau[i]);}
     printf("\n");
 
     mot_noir= mot_jaune;
@@ -62,12 +66,12 @@ int comparaison(char*mot_utilisateur, char*mot){
         char lettre_courante =mot_utilisateur_noir[i];
         int position = cherche(mot_noir,lettre_courante);
         if (position < 5 && lettre_courante != ' '){
-            t[i]=1;
+            tableau[i]=1;
             mot_noir = oter(position,mot_noir);
             mot_utilisateur_noir = oter(position,mot_utilisateur_noir);
         } 
     }
-    for(int i=0; i<5; i++){printf("%d ",t[i]);}
+    for(int i=0; i<5; i++){printf("%d ",tableau[i]);}
     printf("\n");
 
 
@@ -76,10 +80,10 @@ int comparaison(char*mot_utilisateur, char*mot){
     // Affichage 
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur[i];
-        if (t[i]==2){
+        if (tableau[i]==2){
             printf(" %c lettre verte \n",lettre_courante);
         }
-        else if (t[i]==1){
+        else if (tableau[i]==1){
             printf(" %c lettre jaune \n",lettre_courante);
         }
         else{
@@ -92,7 +96,7 @@ int comparaison(char*mot_utilisateur, char*mot){
     //free(mot_utilisateur_jaune);
     free(mot_utilisateur_noir);
     printf("vous pouvez saisir un nouveau mot\n");
-    return 0;
+    return(0);
 }
 
 

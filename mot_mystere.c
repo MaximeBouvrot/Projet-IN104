@@ -18,7 +18,6 @@ int nombre_de_mot(FILE* texte){
 }
 
 int nombrealea(int n){
-    srand(time(NULL));
     return (rand() % n);
 }
 

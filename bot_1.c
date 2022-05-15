@@ -2,28 +2,25 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+
 #include "mot_mystere.h"
 #include "mot_valide.h"
 
-int main(){
-    FILE* dico = fopen("dico.txt","r");
+char* bot_1(FILE* texte, char* mot_buffer){
 
-    int n = nombre_de_mot(dico);
-    fclose(dico);
-    char* mot = malloc(sizeof(char));
-    rewind(dico);
+    rewind(texte);
+    int n = nombre_de_mot(texte);
+    rewind(texte);
+    int k = nombrealea(n);
+    choisir_un_mot_alea(k, mot_buffer,texte);
+    printf("%s\n",mot_buffer);
+    rewind(texte);
+    while (!mot_valide(mot_buffer,texte)){
+    rewind(texte);
     int p = nombrealea(n);
-    choisir_un_mot_alea(p, mot);
-    rewind(dico);
-
-    while (!mot_valide(mot,dico)){
-    printf("bonour");
-    rewind(dico);
-    int p = nombrealea(n);
-    choisir_un_mot_alea(p, mot);
+    choisir_un_mot_alea(p, mot_buffer,texte);
+    rewind(texte);
     }
-    printf("%s",mot);
-    fclose(dico);
-    return(1);
-    
+
+    return(mot_buffer);
 }

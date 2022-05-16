@@ -19,6 +19,7 @@ void init_mot_vert(char*mot_vert){
     }
 }
 
+
 void init_mot_bot (char* mot_bot){
     mot_bot[0]='s';
     mot_bot[1]='o';
@@ -31,6 +32,17 @@ bool vert_valide(char* mot_vert, char* mot_buffer){
     for (int i=0;i<5;i++){
         if (mot_vert[i]!='*'){
             if (mot_buffer[i]!=mot_vert[i]){
+                return false;
+            }
+        }    
+    }
+    return true;
+}
+
+bool noir_valide(char* mot_noir, char* mot_buffer){
+    for (int i=0;i<strlen(mot_noir);i++){
+        for (int j=0;i<strlen(mot_buffer);i++)
+            if (mot_noir[i]!=mot_buffer[j]){
                 return false;
             }
         }    

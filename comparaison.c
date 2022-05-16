@@ -45,8 +45,9 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
     mot_utilisateur_jaune = mot_utilisateur;
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur[i];
-        int position = cherche(mot,lettre_courante);
+        int position = cherche(mot_jaune,lettre_courante);
         if (position == i ){
+                printf("%c\n",lettre_courante);
                 tableau[i]=2;
                 mot_jaune = oter(position,mot_jaune);
                 mot_utilisateur_jaune = oter(position,mot_utilisateur_jaune);
@@ -99,6 +100,7 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
 // int main(){
 //     // char* mot_copie = oter(2,"lilas");
 //     // printf("mot copié %s \n", mot_copie);
-//     comparaison("orner","orage");
+//     int t[5];
+//     comparaison("lilsr","lilas",t);
 //     return 0;
 // }

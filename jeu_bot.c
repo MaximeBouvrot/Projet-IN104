@@ -106,8 +106,11 @@ int main(void){
         break;
 
         case 4:;
-    *indice=choisir_un_mot_alea(1, mot_utilisateur,dico);   
-    printf("hello");
+    *indice=choisir_un_mot_alea(1, mot_utilisateur,dico);
+
+    char* mot_lettres_noires = malloc(26*sizeof(char));
+
+    mot_lettres_noires[0]='*';
     init_mot_vert(mot_vert);
     init_mot_bot(mot_utilisateur);
     while (strcmp(mot_utilisateur,mot)!=0){
@@ -115,6 +118,7 @@ int main(void){
         i+=1;
         mot_utilisateur = bot_4(dico,mot_utilisateur,t,mot_vert,indice);
     }
+    free(mot_lettres_noires);
         break;
 
     }

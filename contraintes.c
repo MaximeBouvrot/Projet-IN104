@@ -16,8 +16,7 @@ void vert_ajout(int*tableau, char* mot_vert, char* mot_precedent){
 void noir_ajout(int*tableau, char* mot_noir, char* mot_precedent){
     for (int i=0;i<5;i++){
         if (tableau[i]==0){
-            a=mot_precedent[i];
-            if (!(strstr(mot_noir,'a'))){}
+            if (!(strchr(mot_noir,mot_precedent[i]))){}
         }
     }
 }

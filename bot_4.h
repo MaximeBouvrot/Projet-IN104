@@ -9,6 +9,6 @@
 #include "mot_valide.h"
 #include "contraintes.h"
 
-char* bot_4(FILE* texte, char* mot_buffer,int* tableau,char* mot_vert,int* z, char* mot_noir);
+char* bot_4(FILE* texte, char* mot_buffer,int* tableau,char* mot_noir,int* z);
 
 #endif

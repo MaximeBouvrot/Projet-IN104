@@ -52,7 +52,7 @@ int main(void){
     char* mot_vert = malloc(5*sizeof(char)); 
     int* indice=malloc(2*sizeof(int));
 
-    switch(mode){
+    switch(*mode){
         case 0:;
             
     printf("veuillez saisir un mot de 5 lettres\n");
@@ -117,7 +117,7 @@ int main(void){
     while (strcmp(mot_utilisateur,mot)!=0){
         comparaison(mot_utilisateur,mot,t);
         i+=1;
-        mot_utilisateur = bot_4(dico,mot_utilisateur,t,mot_vert,indice);
+        mot_utilisateur = bot_4(dico,mot_utilisateur,t,mot_lettres_noires,indice);
     }
     free(mot_lettres_noires);
         break;

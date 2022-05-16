@@ -10,6 +10,7 @@
 #include "bot_1.h"
 #include "bot_2.h"
 #include "bot_3.h"
+#include "bot_4.h"
 #include "contraintes.h"
 
 
@@ -100,7 +101,19 @@ int main(void){
     while (strcmp(mot_utilisateur,mot)!=0){
         comparaison(mot_utilisateur,mot,t);
         i+=1;
-        mot_utilisateur = bot_2(dico,mot_utilisateur,t,mot_vert,indice);
+        mot_utilisateur = bot_3(dico,mot_utilisateur,t,mot_vert,indice);
+    }
+        break;
+
+        case 4:;
+    *indice=choisir_un_mot_alea(1, mot_utilisateur,dico);   
+    printf("hello");
+    init_mot_vert(mot_vert);
+    init_mot_bot(mot_utilisateur);
+    while (strcmp(mot_utilisateur,mot)!=0){
+        comparaison(mot_utilisateur,mot,t);
+        i+=1;
+        mot_utilisateur = bot_4(dico,mot_utilisateur,t,mot_vert,indice);
     }
         break;
 
@@ -116,6 +129,7 @@ int main(void){
         fclose(dico);
         free(mot_vert);
         free(indice);
+        free(mot);
         return 0;
     }
 
@@ -127,6 +141,7 @@ int main(void){
     fclose(dico);
     free(mot_vert);
     free(indice);
+    free(mot);
     return 0;
 }
 

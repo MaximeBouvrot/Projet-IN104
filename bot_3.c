@@ -7,7 +7,7 @@
 #include "mot_valide.h"
 #include "contraintes.h"
 
-char* bot_2(FILE* texte, char* mot_buffer,int* tableau, char* mot_vert,int* z){
+char* bot_3(FILE* texte, char* mot_buffer,int* tableau, char* mot_vert,int* z){
 
     vert_ajout(tableau, mot_vert, mot_buffer);
     rewind(texte);

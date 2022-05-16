@@ -10,5 +10,6 @@
 bool vert_valide(char* mot_vert, char* mot_buffer);
 void init_mot_vert(char*mot_vert);
 void vert_ajout(int*tableau, char* mot_vert, char* mot_precedent);
+void init_mot_bot (char* mot_bot);
 
 #endif

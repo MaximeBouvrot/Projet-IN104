@@ -3,10 +3,6 @@
 #include <time.h>
 #include <string.h>
 
-struct Lettre_struct {
-    int couleur;
-    char lettre;
-};
 
 int cherche(char *s, char carac){
     for(int i = 0; s[i] != '\0';i++)

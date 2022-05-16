@@ -19,6 +19,14 @@ void init_mot_vert(char*mot_vert){
     }
 }
 
+void init_mot_bot (char* mot_bot){
+    mot_bot[0]='s';
+    mot_bot[1]='o';
+    mot_bot[2]='a';
+    mot_bot[3]='r';
+    mot_bot[4]='e';
+}
+
 bool vert_valide(char* mot_vert, char* mot_buffer){
     for (int i=0;i<5;i++){
         if (mot_vert[i]!='*'){

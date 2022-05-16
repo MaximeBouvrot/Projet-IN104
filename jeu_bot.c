@@ -41,8 +41,9 @@ int main(void){
     rewind(dico);
 
     //Sélection du mode de jeu entre l'utilisateur et les différents bots
-    
-    int mode=0;
+    printf("Veuillez saisir le mode.\n 0 pour jouer manuellement\n 1 pour le bot 1 \n 2 pour le bot 2\n 3 pour le bot 3\n 4 pour le bot 4\n");
+    int* mode; 
+    scanf("%d",mode);
 
     //Comparaison des mots utilisateur et du mot mystère :
     int i=1;

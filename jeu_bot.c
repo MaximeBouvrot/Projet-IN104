@@ -42,9 +42,9 @@ int main(void){
 
     //Sélection du mode de jeu entre l'utilisateur et les différents bots
     printf("Veuillez saisir le mode.\n 0 pour jouer manuellement\n 1 pour le bot 1 \n 2 pour le bot 2\n 3 pour le bot 3\n 4 pour le bot 4\n");
-    int* mode; 
-    scanf("%d",mode);
-
+    // int* mode=0; 
+    // scanf("%d",mode);
+    int mode = 0;
     //Comparaison des mots utilisateur et du mot mystère :
     int i=1;
     char* mot_utilisateur=malloc(26*sizeof(char));
@@ -52,7 +52,7 @@ int main(void){
     char* mot_vert = malloc(5*sizeof(char)); 
     int* indice=malloc(2*sizeof(int));
 
-    switch(*mode){
+    switch(mode){
         case 0:;
             
     printf("veuillez saisir un mot de 5 lettres\n");
@@ -63,7 +63,6 @@ int main(void){
             i+=1;
         }
         scanf("%s",mot_utilisateur);
-        rewind(dico);
 
     }
         break;
@@ -123,7 +122,7 @@ int main(void){
         break;
 
     }
-    
+
     t2=clock();
 
     //Affichage des résultats :

@@ -13,6 +13,15 @@ void vert_ajout(int*tableau, char* mot_vert, char* mot_precedent){
     }
 }
 
+void noir_ajout(int*tableau, char* mot_noir, char* mot_precedent){
+    for (int i=0;i<5;i++){
+        if (tableau[i]==0){
+            a=mot_precedent[i];
+            if (!(strstr(mot_noir,'a'))){}
+        }
+    }
+}
+
 void init_mot_vert(char*mot_vert){
     for (int i=0;i<5;i++){
         mot_vert[i]='*';
@@ -41,7 +50,7 @@ bool vert_valide(char* mot_vert, char* mot_buffer){
 
 bool noir_valide(char* mot_noir, char* mot_buffer){
     for (int i=0;i<strlen(mot_noir);i++){
-        for (int j=0;i<strlen(mot_buffer);i++)
+        for (int j=0;i<strlen(mot_buffer);i++){
             if (mot_noir[i]!=mot_buffer[j]){
                 return false;
             }

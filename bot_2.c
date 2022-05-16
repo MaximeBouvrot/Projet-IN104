@@ -11,9 +11,6 @@ char* bot_2(FILE* texte, char* mot_buffer,int* tableau, char* mot_vert,int* z){
 
     vert_ajout(tableau, mot_vert, mot_buffer);
     rewind(texte);
-    int n = nombre_de_mot(texte);
-    rewind(texte);
-    int k = nombrealea(n);
     *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
     printf("%s\n",mot_buffer);
     rewind(texte);

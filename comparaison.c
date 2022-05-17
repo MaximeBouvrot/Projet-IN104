@@ -8,7 +8,7 @@ int cherche(char *s, char carac){
     for(int i = 0; s[i] != '\0';i++)
         if(s[i] == carac)
             return i;
-    return 6;
+    return 5;
 }
 
 char* oter(int i, char* mot){
@@ -68,10 +68,10 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur_noir[i];
         int position = cherche(mot_noir,lettre_courante);
-        if (position < 5 && lettre_courante != ' '){
+        if (position !=5 && lettre_courante != ' '){
             tableau[i]=1;
             mot_noir = oter(position,mot_noir);
-            mot_utilisateur_noir = oter(position,mot_utilisateur_noir);
+            mot_utilisateur_noir = oter(i,mot_utilisateur_noir);
         } 
     }
     for(int i=0; i<5; i++){printf("%d ",tableau[i]);}
@@ -107,6 +107,6 @@ int main(){
     // char* mot_copie = oter(2,"lilas");
     // printf("mot copié %s \n", mot_copie);
     int t[5];
-    comparaison("piper","freed",t);
+    comparaison("soare","tends",t);
     return 0;
 }

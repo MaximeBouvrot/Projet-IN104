@@ -4,7 +4,6 @@
 #include <string.h>
 
 bool mot_valide (char* mot_utilisateur, FILE* dico){
-    printf("hek");
     if (strlen(mot_utilisateur)!=5){
         printf("Le mot ne fait pas 5 lettres.\n");
         return false;

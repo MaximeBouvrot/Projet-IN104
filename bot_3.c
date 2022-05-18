@@ -18,7 +18,6 @@ char* bot_3(FILE* texte, char* mot_buffer,int* tableau, char* mot_vert,int* z){
             rewind(texte);
             *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
         }
-        printf("hello %s\n",mot_buffer);
         rewind(texte);
         *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
     }

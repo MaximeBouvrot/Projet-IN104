@@ -13,7 +13,6 @@ char* bot_1(FILE* texte, char* mot_buffer){
     rewind(texte);
     int k = nombrealea(n);
     choisir_un_mot_alea(k, mot_buffer,texte);
-    printf("%s\n",mot_buffer);
     while (!mot_valide(mot_buffer,texte)){
     rewind(texte);
     int p = nombrealea(n);

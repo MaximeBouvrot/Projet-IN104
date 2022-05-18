@@ -44,6 +44,7 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
 
     strcpy(mot_jaune,mot);
     strcpy(mot_utilisateur_jaune, mot_utilisateur);
+    
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur[i];
         int position = cherche(mot_jaune,lettre_courante);

@@ -13,12 +13,10 @@ char* bot_2(FILE* texte, char* mot_buffer,int* tableau, char* mot_vert,int* z){
     rewind(texte);
     *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
     printf("%s\n",mot_buffer);
-    rewind(texte);
     while(!vert_valide(mot_vert,mot_buffer)){    
         while (!mot_valide(mot_buffer,texte)){
             rewind(texte);
             *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
-            rewind(texte);
         }
         printf("hello %s\n",mot_buffer);
         rewind(texte);

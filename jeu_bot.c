@@ -37,14 +37,17 @@ int main(void){
     int p = nombrealea(n);
     char* mot = malloc(26*sizeof(char));
     choisir_un_mot_alea(p, mot, dico);
-    printf("nombre de lignes : %d\nnombre aléatoire : %d\nmot mystère : %s\n",n,p,mot);
+    printf("nombre de lignes : %d\nnombre aléatoire : %d\n",n,p);
     rewind(dico);
 
     //Sélection du mode de jeu entre l'utilisateur et les différents bots
     printf("Veuillez saisir le mode.\n 0 pour jouer manuellement\n 1 pour le bot 1 \n 2 pour le bot 2\n 3 pour le bot 3\n 4 pour le bot 4\n");
-    // int* mode=0; 
-    // scanf("%d",mode);
-    int mode = 0;
+    int mode =4; 
+
+    if (mode!=0){
+        printf("mot mystère : %s\n",mot);
+    }
+
     //Comparaison des mots utilisateur et du mot mystère :
     int i=1;
     char* mot_utilisateur=malloc(26*sizeof(char));
@@ -63,6 +66,7 @@ int main(void){
             i+=1;
         }
         scanf("%s",mot_utilisateur);
+        rewind(dico);
 
     }
         break;
@@ -105,42 +109,39 @@ int main(void){
     }
         break;
 
+
         case 4:;
     *indice=choisir_un_mot_alea(1, mot_utilisateur,dico);
 
     char* mot_lettres_noires = malloc(26*sizeof(char));
-
-    mot_lettres_noires[0]='*';
+    mot_lettres_noires[0]='\0';
     init_mot_vert(mot_vert);
     init_mot_bot(mot_utilisateur);
+
     while (strcmp(mot_utilisateur,mot)!=0){
         comparaison(mot_utilisateur,mot,t);
         i+=1;
-        mot_utilisateur = bot_4(dico,mot_utilisateur,t,mot_lettres_noires,indice);
+        mot_utilisateur = bot_4(dico,mot_utilisateur,t,mot_lettres_noires,mot_vert,indice);
     }
     free(mot_lettres_noires);
         break;
 
     }
-
+    
     t2=clock();
 
     //Affichage des résultats :
 
     if (strcmp(mot_utilisateur,mot)!=0){
         printf("Perdu, relance le jeu pour réessayer\n");
-        free(mot_utilisateur);
-        fclose(dico);
-        free(mot_vert);
-        free(indice);
-        free(mot);
-        return 0;
-    }
+        }
 
-    printf("Bravo, félicitations c'était bien %s, tu l'as trouvé en %d tentatives\n",mot,i );
+    else if (strcmp(mot_utilisateur,mot)==0){
+        printf("Bravo, félicitations c'était bien %s, tu l'as trouvé en %d tentatives\n",mot,i );
+    }
  
     temps=(float)(t2-t1)/CLOCKS_PER_SEC;
-    printf("temps=%f/n",temps);
+    printf("temps=%f\n",temps);
     free(mot_utilisateur);
     fclose(dico);
     free(mot_vert);

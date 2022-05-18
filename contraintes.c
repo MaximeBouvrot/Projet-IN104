@@ -13,10 +13,28 @@ void vert_ajout(int*tableau, char* mot_vert, char* mot_precedent){
     }
 }
 
-void noir_ajout(int*tableau, char* mot_noir, char* mot_precedent){
+void noir_ajout(int*tableau, char* mot_noir, char* mot_precedent, char* mot_v){
     for (int i=0;i<5;i++){
         if (tableau[i]==0){
-            if (!(strchr(mot_noir,mot_precedent[i]))){}
+            //On test si la lettre n'est pas déjà dans mot_noir
+            if (strchr(mot_noir,mot_precedent[i])==NULL){
+                //On test si ce n'est pas déjà une lettre verte
+                if (!(strchr(mot_v,mot_precedent[i]))){
+                    //On test si ce n'est pas une lettre jaune
+                    int compteur =0;
+                    for (int k=0;k<5;k++){
+                        if (mot_precedent[k]==mot_precedent[i]){
+                            compteur++;
+                        }
+                    }
+
+                    if (compteur==1){
+                        int taille=strlen(mot_noir);
+                        mot_noir[taille++]=mot_precedent[i];
+                        mot_noir[taille]='\0';
+                    }             
+                }
+            }
         }
     }
 }
@@ -48,12 +66,11 @@ bool vert_valide(char* mot_vert, char* mot_buffer){
 }
 
 bool noir_valide(char* mot_noir, char* mot_buffer){
-    for (int i=0;i<strlen(mot_noir);i++){
-        for (int j=0;i<strlen(mot_buffer);i++){
-            if (mot_noir[i]!=mot_buffer[j]){
-                return false;
-            }
-        }    
-    }
+    for (int i=0;i<strlen(mot_buffer);i++){
+        if (!(strchr(mot_noir,mot_buffer[i])==NULL)){
+            return false;
+        }
+    }    
+    
     return true;
 }

@@ -7,24 +7,16 @@
 #include "mot_valide.h"
 #include "contraintes.h"
 
-char* bot_4(FILE* texte, char* mot_buffer,int* tableau,char* mot_noir,int* z){
+char* bot_4(FILE* texte, char* mot_buffer,int* tableau,char* mot_noir,char* mot_v,int* z){
 
-    noir_ajout(tableau, mot_noir, mot_buffer);
+    vert_ajout(tableau,mot_v, mot_buffer);
+    noir_ajout(tableau, mot_noir, mot_buffer, mot_v);
     rewind(texte);
+
     *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
-    printf("%s\n",mot_buffer);
-    rewind(texte);
-    while(!noir_valide(mot_noir,mot_buffer)){    
-        while (!mot_valide(mot_buffer,texte)){
-            rewind(texte);
-            *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
-            rewind(texte);
-        }
-        printf("hello %s\n",mot_buffer);
-        rewind(texte);
-        *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
-        rewind(texte);
+    while ((!vert_valide(mot_v,mot_buffer)||!noir_valide(mot_noir,mot_buffer))||!mot_valide(mot_buffer,texte)){
+                rewind(texte);
+                *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
     }
-    printf("%s",mot_buffer);
     return(mot_buffer);
 }

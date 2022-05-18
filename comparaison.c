@@ -37,12 +37,13 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
     */
     for(int i=0; i<5; i++){tableau[i]=0;}
     char* mot_jaune =malloc(26*sizeof(char)); //il n'y aura plus que des lettres jaunes et noires dedans
-    char* mot_noir = malloc(26*sizeof(char)); //il n'y aura plus que des lettres noires dedans
+    char* mot_noir; //il n'y aura plus que des lettres noires dedans
     char* mot_utilisateur_jaune = malloc(26*sizeof(char));
-    char* mot_utilisateur_noir = malloc(26*sizeof(char));
+    char* mot_utilisateur_noir;
     
-    mot_jaune = mot;
-    mot_utilisateur_jaune = mot_utilisateur;
+
+    strcpy(mot_jaune,mot);
+    strcpy(mot_utilisateur_jaune, mot_utilisateur);
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur[i];
         int position = cherche(mot_jaune,lettre_courante);
@@ -74,12 +75,13 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
             mot_utilisateur_noir = oter(i,mot_utilisateur_noir);
         } 
     }
-    for(int i=0; i<5; i++){printf("%d ",tableau[i]);}
-    printf("\n");
+   
 
-
+    /*
     printf(" mot jaune : %s\n mot_utilisateur_jaune : %s\n",mot_jaune, mot_utilisateur_jaune);
     printf(" mot noir : %s\n mot_utilisateur_noir : %s\n",mot_noir, mot_utilisateur_noir);
+    */
+
     // Affichage 
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur[i];
@@ -94,19 +96,9 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
         }
     }
 
-    free(mot_noir);
-    //free(mot_jaune);
-    //free(mot_utilisateur_jaune);
-    free(mot_utilisateur_noir);
+    free(mot_jaune);
+    free(mot_utilisateur_jaune);
     printf("vous pouvez saisir un nouveau mot\n");
     return(0);
 }
 
-
-int main(){
-    // char* mot_copie = oter(2,"lilas");
-    // printf("mot copié %s \n", mot_copie);
-    int t[5];
-    comparaison("soare","tends",t);
-    return 0;
-}

@@ -47,10 +47,10 @@ void init_mot_vert(char*mot_vert){
 
 
 void init_mot_bot (char* mot_bot){
-    mot_bot[0]='s';
-    mot_bot[1]='i';
-    mot_bot[2]='a';
-    mot_bot[3]='r';
+    mot_bot[0]='r';
+    mot_bot[1]='a';
+    mot_bot[2]='i';
+    mot_bot[3]='s';
     mot_bot[4]='e';
 }
 

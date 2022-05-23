@@ -16,11 +16,11 @@ void vert_ajout(int*tableau, char* mot_vert, char* mot_precedent){
 void noir_ajout(int*tableau, char* mot_noir, char* mot_precedent, char* mot_v){
     for (int i=0;i<5;i++){
         if (tableau[i]==0){
-            //On test si la lettre n'est pas déjà dans mot_noir
+            //On teste si la lettre n'est pas déjà dans mot_noir
             if (strchr(mot_noir,mot_precedent[i])==NULL){
                 //On test si ce n'est pas déjà une lettre verte
                 if (!(strchr(mot_v,mot_precedent[i]))){
-                    //On test si ce n'est pas une lettre jaune
+                    //On teste si ce n'est pas une lettre jaune
                     int compteur =0;
                     for (int k=0;k<5;k++){
                         if (mot_precedent[k]==mot_precedent[i]){
@@ -48,7 +48,7 @@ void init_mot_vert(char*mot_vert){
 
 void init_mot_bot (char* mot_bot){
     mot_bot[0]='s';
-    mot_bot[1]='o';
+    mot_bot[1]='i';
     mot_bot[2]='a';
     mot_bot[3]='r';
     mot_bot[4]='e';

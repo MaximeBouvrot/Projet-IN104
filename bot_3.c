@@ -12,7 +12,7 @@ char* bot_3(FILE* texte, char* mot_buffer,int* tableau, char* mot_vert,int* z){
     vert_ajout(tableau, mot_vert, mot_buffer);
     rewind(texte);
     *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
-    printf("%s\n",mot_buffer);
+    //printf("%s\n",mot_buffer);
     while(!vert_valide(mot_vert,mot_buffer)){    
         while (!mot_valide(mot_buffer,texte)){
             rewind(texte);
@@ -21,6 +21,6 @@ char* bot_3(FILE* texte, char* mot_buffer,int* tableau, char* mot_vert,int* z){
         rewind(texte);
         *z=choisir_un_mot_alea(*z, mot_buffer,texte)+1;
     }
-    printf("%s",mot_buffer);
+    //printf("%s",mot_buffer);
     return(mot_buffer);
 }

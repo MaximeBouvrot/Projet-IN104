@@ -61,8 +61,8 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
                 mot_utilisateur_jaune = oter(position,mot_utilisateur_jaune);
             } 
     }
-    for(int i=0; i<5; i++){printf("%d ",tableau[i]);}
-    printf("\n");
+    // for(int i=0; i<5; i++){printf("%d ",tableau[i]);}
+    // printf("\n");
 
     mot_noir= mot_jaune;
     mot_utilisateur_noir = mot_utilisateur_jaune;
@@ -77,12 +77,6 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
         } 
     }
    
-
-    /*
-    printf(" mot jaune : %s\n mot_utilisateur_jaune : %s\n",mot_jaune, mot_utilisateur_jaune);
-    printf(" mot noir : %s\n mot_utilisateur_noir : %s\n",mot_noir, mot_utilisateur_noir);
-    */
-
     // Affichage 
     for (int i=0; i<5; i++){
         char lettre_courante =mot_utilisateur[i];
@@ -99,7 +93,7 @@ int comparaison(char*mot_utilisateur, char*mot, int* tableau){
 
     free(mot_jaune);
     free(mot_utilisateur_jaune);
-    printf("vous pouvez saisir un nouveau mot\n");
+    //printf("vous pouvez saisir un nouveau mot\n");
     return(0);
 }
 

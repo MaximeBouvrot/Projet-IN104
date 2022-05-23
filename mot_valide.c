@@ -13,7 +13,7 @@ bool mot_valide (char* mot_utilisateur, FILE* dico){
     while  (strcmp(mot_utilisateur,mot_courant)!=0){
         if (fscanf(dico, "%s ", mot_courant) == EOF ){
             printf("fin du fichier, le mot n'est pas dans le dico\n");
-            printf("vous pouvez saisir un nouveau mot\n");
+            printf("Veuillez saisir un nouveau mot\n");
             free(mot_courant);
             return false;
             }
@@ -21,7 +21,7 @@ bool mot_valide (char* mot_utilisateur, FILE* dico){
         while (strlen(mot_courant)!=5){
             if (fscanf(dico,"%s",mot_courant)==EOF){
                 printf("fin du fichier, le mot n'est pas dans le dico\n");
-                printf("vous pouvez saisir un nouveau mot\n");
+                printf("Veuillez saisir un nouveau mot\n");
                 free(mot_courant);
                 rewind(dico);
                 return false;

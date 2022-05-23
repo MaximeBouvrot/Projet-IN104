@@ -1,6 +1,6 @@
 # Projet-IN104
 #Ceci est une interprétation de Wordle
-# Le fichier jeu_bot.c contient le main.
+# Le fichier jeu.c contient le main.
 # 5 modes de jeu sont possibles :
 # mode 0 : jouer manuellement
 # mode 1 : bot n°1
